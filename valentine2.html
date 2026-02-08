@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Pearly ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e0, #fff);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      max-width: 340px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #e63963;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .photos {
+      display: flex;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .photos img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      margin: 8px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background-color: #e63963;
+      color: white;
+    }
+
+    #no {
+      background-color: #ddd;
+      position: absolute;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_0b8fa01c5c.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Pearly Ng ❤️</h1>
+    <p>Will you be my Valentine<br>for the <b>4th time</b>?</p>
+
+    <div class="photos">
+      <img src="photo1.jpg" alt="Us">
+      <img src="photo2.jpg" alt="Us">
+    </div>
+
+    <div class="buttons">
+      <button id="yes" onclick="yesClicked()">YES ❤️</button>
+      <button id="no" onmouseover="moveNo()">NO</button>
+    </div>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="text-align:center; padding:40px;">
+          <h1 style="color:#e63963;">YAY ❤️</h1>
+          <p style="font-size:18px;">
+            Best decision ever ❤️<br>
+            Happy Valentine’s
+          </p>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+  </script>
+
+</body>
+</html>
