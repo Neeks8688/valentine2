@@ -24,17 +24,10 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.15);
       max-width: 340px;
       width: 90%;
+      position: relative;
     }
 
-    h1 {
-      color: #e63963;
-      margin-bottom: 8px;
-    }
-
-    p {
-      font-size: 17px;
-      line-height: 1.4;
-    }
+    h1 { color: #e63963; }
 
     .photos {
       display: flex;
@@ -46,11 +39,6 @@
       width: 100%;
       border-radius: 14px;
       object-fit: cover;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
-
-    .buttons {
-      margin-top: 20px;
     }
 
     button {
@@ -72,14 +60,17 @@
       position: absolute;
     }
 
-    audio {
-      display: none;
+    #musicBtn {
+      margin-top: 12px;
+      background: #fff;
+      border: 1px solid #e63963;
+      color: #e63963;
     }
   </style>
 </head>
 <body>
 
-  <audio autoplay loop>
+  <audio id="bgm" loop>
     <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_0b8fa01c5c.mp3" type="audio/mpeg">
   </audio>
 
@@ -88,38 +79,39 @@
     <p>Will you be my Valentine<br>for the <b>4th time</b>?</p>
 
     <div class="photos">
-      <img src="photo1.jpg" alt="Us">
-      <img src="photo2.jpg" alt="Us">
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
     </div>
 
-    <div class="buttons">
+    <button id="musicBtn" onclick="playMusic()">Tap to start ❤️</button>
+
+    <div>
       <button id="yes" onclick="yesClicked()">YES ❤️</button>
       <button id="no" onmouseover="moveNo()">NO</button>
     </div>
   </div>
 
   <script>
+    function playMusic() {
+      document.getElementById("bgm").play();
+      document.getElementById("musicBtn").style.display = "none";
+    }
+
     function yesClicked() {
       document.body.innerHTML = `
-        <div style="text-align:center; padding:40px;">
+        <div style="padding:40px;">
           <h1 style="color:#e63963;">YAY ❤️</h1>
-          <p style="font-size:18px;">
-            Best decision ever ❤️<br>
-            Happy Valentine’s
-          </p>
+          <p>Best decision ever ❤️<br>Happy Valentine’s</p>
         </div>
       `;
     }
 
     function moveNo() {
       const noBtn = document.getElementById("no");
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 120);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+      noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+      noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
     }
   </script>
 
 </body>
-
 </html>
