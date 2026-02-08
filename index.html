@@ -1,81 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Be My Valentine ❤️</title>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      color: white;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
 
-    .photo {
-      max-width: 85%;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
-    }
+  .card {
+    background: white;
+    border-radius: 25px;
+    padding: 24px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
 
-    button {
-      background: none;
-      border: 2px solid white;
-      color: white;
-      padding: 12px 28px;
-      font-size: 18px;
-      border-radius: 30px;
-      cursor: pointer;
-    }
+  h1 {
+    font-size: 22px;
+    color: #ff4d6d;
+    margin-bottom: 12px;
+  }
 
-    button:hover {
-      background: white;
-      color: black;
-    }
+  .small-photo {
+    width: 100%;
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
 
-    #afterYes {
-      display: none;
-    }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-  </style>
+  button {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .yes {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  .no {
+    background: #eee;
+    color: #555;
+  }
+
+  /* AFTER YES */
+  #afterYes {
+    display: none;
+    text-align: center;
+  }
+
+  .big-photo {
+    max-width: 90%;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  }
+
+  .final-text {
+    margin-top: 16px;
+    font-size: 22px;
+    color: white;
+  }
+</style>
 </head>
 
 <body>
 
-  <!-- BEFORE YES -->
-  <img src="photo2.jpg" class="photo" id="firstPhoto">
+<!-- CARD -->
+<div class="card" id="card">
+  <h1>Will you be my Valentine for the 4th time? ❤️</h1>
 
-  <button onclick="sayYes()">YES ❤️</button>
+  <img src="photo2.jpg" class="small-photo">
 
-  <!-- AFTER YES -->
-  <div id="afterYes">
-    <img src="photo1.jpg" class="photo">
-    <h2>Forever us ❤️</h2>
+  <div class="buttons">
+    <button class="yes" onclick="yesClicked()">YES ❤️</button>
+    <button class="no" onclick="noClicked()">NO 💔</button>
   </div>
+</div>
 
-  <!-- Background Music -->
-  <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+<!-- AFTER YES -->
+<div id="afterYes">
+  <img src="photo3.jpg" class="big-photo">
+  <div class="final-text">Forever us ❤️</div>
+</div>
 
-  <script>
-    function sayYes() {
-      document.getElementById("firstPhoto").style.display = "none";
-      document.querySelector("button").style.display = "none";
-      document.getElementById("afterYes").style.display = "block";
-    }
-  </script>
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function yesClicked() {
+    document.getElementById("card").style.display = "none";
+    document.getElementById("afterYes").style.display = "block";
+  }
+
+  function noClicked() {
+    alert("Wrong answer 😌❤️");
+  }
+</script>
 
 </body>
 </html>
