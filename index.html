@@ -2,117 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Pearly Ng ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine ❤️</title>
 
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
+      height: 100vh;
+      background: #000;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffd6e0, #fff);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      color: white;
       text-align: center;
     }
 
-    .card {
-      background: white;
-      padding: 24px;
+    .photo {
+      max-width: 85%;
       border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-      max-width: 340px;
-      width: 90%;
-      position: relative;
-    }
-
-    h1 { color: #e63963; }
-
-    .photos {
-      display: flex;
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .photos img {
-      width: 100%;
-      border-radius: 14px;
-      object-fit: cover;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
     }
 
     button {
-      padding: 12px 22px;
-      margin: 8px;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
+      background: none;
+      border: 2px solid white;
+      color: white;
+      padding: 12px 28px;
+      font-size: 18px;
+      border-radius: 30px;
       cursor: pointer;
     }
 
-    #yes {
-      background-color: #e63963;
-      color: white;
+    button:hover {
+      background: white;
+      color: black;
     }
 
-    #no {
-      background-color: #ddd;
-      position: absolute;
+    #afterYes {
+      display: none;
     }
 
-    #musicBtn {
-      margin-top: 12px;
-      background: #fff;
-      border: 1px solid #e63963;
-      color: #e63963;
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
   </style>
 </head>
+
 <body>
 
-  <audio id="bgm" loop>
-    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_0b8fa01c5c.mp3" type="audio/mpeg">
-  </audio>
+  <!-- BEFORE YES -->
+  <img src="photo2.jpg" class="photo" id="firstPhoto">
 
-  <div class="card">
-    <h1>Pearly Ng ❤️</h1>
-    <p>Will you be my Valentine<br>for the <b>4th time</b>?</p>
+  <button onclick="sayYes()">YES ❤️</button>
 
-    <div class="photo-container">
-  <img src="photo2.jpg" alt="Us ❤️" class="photo">
-</div>
-    
-    <button id="musicBtn" onclick="playMusic()">Tap to start ❤️</button>
-
-    <div>
-      <button id="yes" onclick="yesClicked()">YES ❤️</button>
-      <button id="no" onmouseover="moveNo()">NO</button>
-    </div>
+  <!-- AFTER YES -->
+  <div id="afterYes">
+    <img src="photo1.jpg" class="photo">
+    <h2>Forever us ❤️</h2>
   </div>
 
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
-    function playMusic() {
-      document.getElementById("bgm").play();
-      document.getElementById("musicBtn").style.display = "none";
-    }
-
-    function yesClicked() {
-      document.body.innerHTML = `
-        <div style="padding:40px;">
-          <h1 style="color:#e63963;">YAY ❤️</h1>
-          <p>Best decision ever ❤️<br>Happy Valentine’s</p>
-        </div>
-      `;
-    }
-
-    function moveNo() {
-      const noBtn = document.getElementById("no");
-      noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
-      noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
+    function sayYes() {
+      document.getElementById("firstPhoto").style.display = "none";
+      document.querySelector("button").style.display = "none";
+      document.getElementById("afterYes").style.display = "block";
     }
   </script>
 
 </body>
 </html>
-
-
